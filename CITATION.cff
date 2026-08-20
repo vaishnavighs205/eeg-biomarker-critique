@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the underlying OpenNeuro dataset and relevant methods papers."
+title: "EEG Biomarker Critique and Minimal-Electrode Optimization"
+type: software
+version: 0.1.0
+authors:
+  - family-names: "Project Author"
+    given-names: "Replace Me"
+repository-code: "https://github.com/REPLACE_ME/eeg-biomarker-critique"

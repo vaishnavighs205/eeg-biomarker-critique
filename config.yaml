@@ -1,0 +1,75 @@
+project:
+  name: eeg-biomarker-critique
+  random_seed: 42
+
+data:
+  dataset_root: data/ds004504
+  participants_tsv: participants.tsv
+  use_derivatives: true
+  expected_subjects: 88
+  expected_groups:
+    AD: 36
+    FTD: 23
+    CN: 29
+  expected_channels:
+    - Fp1
+    - Fp2
+    - F7
+    - F3
+    - Fz
+    - F4
+    - F8
+    - T3
+    - C3
+    - Cz
+    - C4
+    - T4
+    - T5
+    - P3
+    - Pz
+    - P4
+    - T6
+    - O1
+    - O2
+
+preprocessing:
+  epoch_length_s: 30
+  epoch_overlap_s: 15
+  analysis_fmin_hz: 0.5
+  analysis_fmax_hz: 45.0
+
+spectral:
+  method: welch
+  bands:
+    delta: [0.5, 4.0]
+    theta: [4.0, 8.0]
+    alpha: [8.0, 13.0]
+    beta: [13.0, 25.0]
+    gamma: [25.0, 45.0]
+  specparam:
+    fmin_hz: 1.0
+    fmax_hz: 45.0
+    aperiodic_mode: fixed
+
+connectivity:
+  methods:
+    - coherence
+    - wpli
+    - imaginary_coherence
+
+validation:
+  outer_folds: 5
+  inner_folds: 4
+  primary_metric: balanced_accuracy
+  subject_level_aggregation: mean_probability
+
+models:
+  enabled:
+    - logistic_regression
+    - linear_svm
+    - xgboost
+
+channel_selection:
+  counts_to_evaluate: [19, 12, 8, 6, 4, 3, 2]
+  max_balanced_accuracy_drop: 0.02
+  min_biomarker_preservation_correlation: 0.90

@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Data: never commit EEG recordings
+data/ds004504/
+data/raw/*
+data/derivatives/*
+data/processed/*
+!data/raw/.gitkeep
+!data/derivatives/.gitkeep
+!data/processed/.gitkeep
+
+# Results generated locally
+results/figures/*
+results/tables/*
+results/models/*
+results/logs/*
+!results/figures/.gitkeep
+!results/tables/.gitkeep
+!results/models/.gitkeep
+!results/logs/.gitkeep
+
+# Local config overrides
+config.local.yaml
