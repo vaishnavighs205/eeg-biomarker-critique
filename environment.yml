@@ -1,0 +1,15 @@
+name: eeg_biomarkers
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - pip
+  - git
+  - git-annex
+  - datalad
+
+  - pip:
+      - -r requirements.txt
+      - -e .
